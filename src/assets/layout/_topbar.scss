@@ -51,7 +51,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: var(--surface-hover);
+            // background-color: var(--surface-hover);
         }
 
         &:focus-visible {
@@ -71,6 +71,10 @@
             background-color: var(--primary-color);
             color: var(--primary-contrast-color);
         }
+    }
+
+    .layout-topbar-action:hover i {
+        color: var(--text-color);
     }
 
     .layout-menu-button {

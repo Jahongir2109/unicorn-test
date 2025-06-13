@@ -36,10 +36,7 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "scripts": [],
-                        "postcssOptions": {
-                            "config": "./tailwind.config.js"
-                        }
+                        "scripts": []
                     },
                     "configurations": {
                         "production": {
