@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@use './tailwind.css';
+@use './assets/layout/layout.scss';
+@use 'primeicons/primeicons.css';
+@use './assets/demo/demo.scss';
+
+.bg-light-blue {
+    background-color: rgb(0, 115, 174);
+}
+
+.text-white {
+    color: white;
+    font-size: 17px;
+    font-weight: 400;
+}
