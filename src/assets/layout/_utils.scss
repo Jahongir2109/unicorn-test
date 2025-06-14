@@ -7,9 +7,12 @@
 
 .card {
     background: var(--surface-card);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem; /* Removed as parent handles gap */
     border-radius: var(--content-border-radius);
+    width: 100%; /* Ensure cards take full width in flex-col */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    flex-grow: 0; /* Prevent cards from growing */
+    min-height: 0; /* Prevent potential overflow issues in flex container */
 
     &:last-child {
         margin-bottom: 0;
