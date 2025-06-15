@@ -18,339 +18,201 @@ import { CommonModule } from "@angular/common";
   styles: [
     `
       :host {
-        border: 2px solid red; /* Temporary border for host to debug */
-      }
-      .card {
-        border: 2px solid blue; /* Temporary border for cards to debug */
+        display: block;
+        padding: 1rem;
+        overflow-y: auto;
+        max-height: 100vh;
       }
 
       :host * {
         box-sizing: border-box;
       }
-      :host ::ng-deep .p-calendar .p-datepicker {
-        background-color: #e0f2f7; /* Light blue from image for calendar background */
-        color: var(--text-color);
-        border: none; /* No border as in the image */
-        border-radius: var(--content-border-radius);
+
+      /* 🌟 Custom Calendar Styles (Based on Uploaded Image) */
+      ::ng-deep .p-calendar {
         width: 100%;
-        height: 100%;
-      }
-      :host ::ng-deep .p-calendar {
-        width: 100%;
-        height: 100%;
-      }
-      :host ::ng-deep .p-calendar .p-datepicker table {
-        width: 100%;
-        height: 100%;
-      }
-      :host ::ng-deep .p-calendar .p-datepicker table td > span.p-highlight {
-        background-color: #38bdf8; /* Light blue from image for selected date */
-        color: white; /* White text for selected date */
-      }
-      :host ::ng-deep .p-calendar .p-datepicker table td > span:focus {
-        box-shadow: none;
-      }
-      :host
-        ::ng-deep
-        .p-calendar
-        .p-datepicker
-        table
-        td.p-datepicker-today
-        > span {
-        background-color: transparent; /* No specific background for today */
-        color: var(--text-color); /* Default text color for today */
-      }
-      :host ::ng-deep .p-calendar .p-datepicker-header .p-datepicker-title,
-      :host ::ng-deep .p-calendar .p-datepicker-header .p-datepicker-prev,
-      :host ::ng-deep .p-calendar .p-datepicker-header .p-datepicker-next {
-        color: #64748b; /* Gray text for header elements */
-      }
-      :host
-        ::ng-deep
-        .p-calendar
-        .p-datepicker-header
-        .p-datepicker-title
-        .p-link {
-        color: #64748b; /* Gray text for month/year title */
-      }
-      :host ::ng-deep .p-calendar .p-datepicker table th {
-        color: #94a3b8; /* Lighter gray for day names */
-      }
-      :host ::ng-deep .p-calendar .p-datepicker table td span {
-        color: #333; /* Darker text for dates */
-      }
-      :host
-        ::ng-deep
-        .p-calendar
-        .p-datepicker-header
-        .p-datepicker-prev.p-link,
-      :host
-        ::ng-deep
-        .p-calendar
-        .p-datepicker-header
-        .p-datepicker-next.p-link {
-        color: #64748b; /* Gray text for navigation arrows */
-      }
-      .custom-datepicker {
-        width: 100%;
+        font-family: "Segoe UI", sans-serif;
       }
 
-      /* Time Widget Styling */
-      .time-widget-card {
-        background-color: #e0f2f7; /* Light blue from image */
-        color: #333; /* Darker text */
-        border-radius: var(--content-border-radius);
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .time-widget-time {
-        font-weight: bold;
-        font-size: 1.25rem;
-      }
-
-      /* Birthday Widget Styling */
-      .birthday-widget-card {
-        background-color: #fff;
-        border-radius: var(--content-border-radius);
-        padding: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      .birthday-icon-container {
-        background-color: #f7e0e7; /* Light pink from image */
-        border-radius: 50%;
-        width: 3.5rem;
-        height: 3.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .birthday-icon {
-        font-size: 1.5rem;
-        color: #e91e63; /* Pink from image */
-      }
-      .birthday-text {
-        color: var(--text-color);
-        font-size: 0.9rem;
-      }
-      .birthday-highlight-text {
-        font-weight: bold;
-        color: #e91e63; /* Use pink for highlight as in image */
-      }
-
-      /* Meet Digital Office Widget Styling */
-      .meet-widget-card {
-        background-color: #fff;
-        border-radius: var(--content-border-radius);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .meet-logo {
-        height: 2rem; /* Adjust as needed */
-        margin-bottom: 0.5rem;
-      }
-      .meet-buttons {
-        display: flex;
-        gap: 0.5rem;
-      }
-      .meet-button {
-        flex: 1;
-        border-radius: 9999px; /* Tailwind rounded-full */
-        padding: 0.75rem 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 500;
-      }
-      .meet-create-button {
-        background-color: #2196f3; /* Blue from image */
-        color: #fff;
-      }
-      .meet-join-button {
-        background-color: #e3f2fd; /* Light blue from image */
-        color: #2196f3; /* Blue from image */
-      }
-
-      /* LexUZ Online Widget Styling */
-      .lexuz-widget-card {
-        background-color: #fff;
-        border-radius: var(--content-border-radius);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      .lexuz-logo {
-        height: 2.5rem;
-        margin-bottom: 0.5rem;
-      }
-      .lexuz-input-container {
-        position: relative;
-        width: 100%;
-        display: flex;
-        align-items: center;
-      }
-      .lexuz-input {
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 9999px;
-        padding: 0.5rem 2.5rem 0.5rem 1rem;
-      }
-      .lexuz-search-icon {
-        position: absolute;
-        right: 0.75rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #999;
-      }
-
-      /* Notes Widget Styling */
-      .notes-widget-card {
-        background-color: #fff;
-        border-radius: var(--content-border-radius);
-        padding: 1.5rem;
-      }
-      .notes-textarea {
-        width: 100%;
-        border: 1px solid #e2e8f0;
-        border-radius: 0.5rem;
+      ::ng-deep .p-datepicker {
+        background: linear-gradient(to bottom right, #3b82f6, #06b6d4);
+        border-radius: 1rem;
+        color: white;
         padding: 0.5rem;
-        resize: vertical;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: none;
       }
-      .notes-buttons-container {
-        display: flex;
+
+      ::ng-deep .p-datepicker-header {
+        background: transparent;
+        border: none;
+        color: white;
+        font-weight: bold;
         justify-content: space-between;
-        align-items: center;
-        margin-top: 1rem;
       }
-      .notes-left-buttons .p-button {
-        color: #64748b;
+
+      ::ng-deep .p-datepicker-prev,
+      ::ng-deep .p-datepicker-next {
+        color: white;
+        font-size: 1.2rem;
       }
-      .notes-right-button .p-button-danger {
-        color: #ef4444;
+
+      ::ng-deep .p-datepicker-title {
+        font-size: 1rem;
+      }
+
+      ::ng-deep .p-datepicker-calendar th {
+        color: #e0f2fe;
+        font-weight: 400;
+      }
+
+      ::ng-deep .p-datepicker-calendar td {
+        color: white;
+      }
+
+      ::ng-deep .p-datepicker-calendar td > span {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        border-radius: 50%;
+        transition: background-color 0.3s;
+      }
+
+      ::ng-deep .p-datepicker-calendar td > span:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      ::ng-deep .p-datepicker-calendar td.p-datepicker-today > span {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: #000;
+        font-weight: bold;
+      }
+
+      ::ng-deep .p-datepicker-calendar td.p-highlight > span {
+        background-color: white;
+        color: #0284c7;
+        font-weight: bold;
       }
     `,
   ],
   template: `
     <div class="flex flex-col gap-6">
-      <!-- Calendar widget -->
-      <div class="card" style="height: 400px;">
-        <div
-          class="p-4 h-full"
-          style="background-color: #E0F2F7; border-radius: var(--content-border-radius); width:100%; height: 100%"
-        >
-          <p-calendar
-            [inline]="true"
-            [(ngModel)]="dateValue"
-            [monthNavigator]="true"
-            [yearNavigator]="true"
-            yearRange="2000:2030"
-            styleClass="custom-datepicker"
-          ></p-calendar>
-        </div>
-      </div>
-
-      <!-- Weather widget -->
+      <!-- Calendar -->
       <div
-        class="card flex items-center gap-4 rounded-2xl"
-        style="background-color: #3f2e64; color: white; padding: 1.5rem;"
+        class="rounded-2xl shadow-md p-4 bg-gradient-to-br from-blue-500 to-cyan-500 text-white"
       >
-        <div class="flex flex-col">
-          <div class="font-semibold" style="color: white;">Tashkent</div>
-          <div class="text-xs" style="color: rgba(255, 255, 255, 0.7);">
-            Cloudy
-          </div>
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-lg font-semibold">September 2024</h2>
+          <span class="text-sm">{{ currentTime | date: "shortTime" }}</span>
         </div>
-        <div class="ml-auto flex items-center gap-1">
-          <div class="text-2xl font-bold" style="color: white;">32°</div>
-          <div class="text-3xl relative">
-            <i
-              class="pi pi-sun absolute text-yellow-400"
-              style="font-size: 2rem; top: -0.5rem; right: 0.5rem;"
-            ></i>
-            <i
-              class="pi pi-cloud absolute text-white"
-              style="font-size: 2rem; bottom: 0; left: 0;"
-            ></i>
-          </div>
+        <!-- <p-calendar
+          [inline]="true"
+          [(ngModel)]="dateValue"
+          [monthNavigator]="true"
+          [yearNavigator]="true"
+          yearRange="2000:2030"
+          class="w-full"
+        ></p-calendar> -->
+      </div>
+
+      <!-- Weather -->
+      <div
+        class="rounded-2xl shadow-md p-4 bg-gradient-to-r from-purple-700 to-indigo-800 text-white flex items-center justify-between"
+      >
+        <div>
+          <div class="text-sm font-light">Weather</div>
+          <div class="text-3xl font-bold leading-tight">32°C</div>
+          <div class="text-sm opacity-70">Tashkent</div>
+        </div>
+        <div class="relative w-12 h-12">
+          <i
+            class="pi pi-sun text-yellow-300 text-3xl absolute top-0 right-0"
+          ></i>
+          <i
+            class="pi pi-cloud text-white text-2xl absolute bottom-0 left-0"
+          ></i>
         </div>
       </div>
 
-      <!-- Birthday widget -->
-      <div class="card birthday-widget-card">
-        <div class="birthday-icon-container">
-          <i class="pi pi-gift birthday-icon"></i>
+      <!-- Birthday -->
+      <div class="rounded-2xl shadow-md p-4 bg-white flex gap-4 items-center">
+        <div
+          class="bg-pink-100 w-14 h-14 flex items-center justify-center rounded-full"
+        >
+          <i class="pi pi-gift text-pink-500 text-2xl"></i>
         </div>
         <div>
           <div class="font-semibold">Tug'ilgan kunlar</div>
-          <div class="birthday-text">
-            Bugun <span class="birthday-highlight-text">Abbos Xazratov</span> va
-            yana
-            <span class="birthday-highlight-text">4 kishining</span> tug'ilgan
+          <div class="text-sm">
+            Bugun <span class="font-bold text-pink-500">Abbos Xazratov</span> va
+            <span class="font-bold text-pink-500">yana 4 kishi</span> tug'ilgan
             kuni
           </div>
         </div>
       </div>
 
-      <!-- Meet Digital Office widget -->
-      <div class="card meet-widget-card">
-        <img
-          src="assets/layout/images/meet-logo.png"
-          alt="Meet Digital Office"
-          class="meet-logo"
-        />
-        <div class="meet-buttons">
-          <button pButton class="meet-button meet-create-button">
+      <!-- Meet -->
+      <div class="rounded-2xl shadow-md p-4 bg-white flex flex-col gap-4">
+        <img src="assets/layout/images/meet-logo.png" alt="Meet" class="h-8" />
+        <div class="flex gap-2">
+          <button
+            pButton
+            class="flex-1 rounded-full px-4 py-2 font-medium bg-blue-500 text-white"
+          >
             <i class="pi pi-plus mr-2"></i> Create
           </button>
-          <button pButton class="meet-button meet-join-button">
+          <button
+            pButton
+            class="flex-1 rounded-full px-4 py-2 font-medium bg-blue-100 text-blue-500"
+          >
             <i class="pi pi-video mr-2"></i> Join
           </button>
         </div>
       </div>
 
-      <!-- LexUZ Online widget -->
-      <div class="card lexuz-widget-card">
+      <!-- LexUZ -->
+      <div class="rounded-2xl shadow-md p-4 bg-white flex flex-col gap-3">
         <img
           src="assets/layout/images/lexuz-logo.png"
-          alt="LexUZ Online"
-          class="lexuz-logo"
+          alt="LexUZ"
+          class="h-10"
         />
-        <div class="lexuz-input-container">
+        <div class="relative">
           <input
             pInputText
             type="text"
             placeholder="Hujjat raqami"
-            class="lexuz-input"
+            class="w-full border border-gray-300 rounded-full py-2 pl-4 pr-10"
           />
-          <i class="pi pi-search lexuz-search-icon"></i>
+          <i
+            class="pi pi-search absolute top-1/2 right-3 -translate-y-1/2 text-gray-400"
+          ></i>
         </div>
-        <div class="lexuz-input-container">
+        <div class="relative">
           <input
             pInputText
             type="text"
             placeholder="Hujjat nomi"
-            class="lexuz-input"
+            class="w-full border border-gray-300 rounded-full py-2 pl-4 pr-10"
           />
-          <i class="pi pi-search lexuz-search-icon"></i>
+          <i
+            class="pi pi-search absolute top-1/2 right-3 -translate-y-1/2 text-gray-400"
+          ></i>
         </div>
       </div>
 
-      <!-- Notes widget -->
-      <div class="card notes-widget-card">
+      <!-- Notes -->
+      <div class="rounded-2xl shadow-md p-4 bg-white">
         <div class="font-semibold mb-2">Notes</div>
         <textarea
-          class="notes-textarea"
+          class="w-full border border-gray-300 rounded-lg p-2 resize-y"
           rows="3"
           placeholder="Take a note..."
         ></textarea>
-        <div class="notes-buttons-container">
-          <div class="notes-left-buttons flex gap-2">
+        <div class="flex justify-between items-center mt-4">
+          <div class="flex gap-2">
             <button
               pButton
               icon="pi pi-pencil"
@@ -367,13 +229,11 @@ import { CommonModule } from "@angular/common";
               class="p-button-text p-button-rounded"
             ></button>
           </div>
-          <div class="notes-right-button">
-            <button
-              pButton
-              icon="pi pi-trash"
-              class="p-button-text p-button-rounded p-button-danger"
-            ></button>
-          </div>
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-text p-button-rounded p-button-danger"
+          ></button>
         </div>
       </div>
     </div>
@@ -384,9 +244,9 @@ export class DashboardRightPanel {
   currentTime: Date = new Date();
 
   constructor() {
-    this.dateValue.setMonth(8); // Set to September (month index 8 for September)
+    this.dateValue.setMonth(8); // September
     this.dateValue.setFullYear(2024);
-    this.dateValue.setDate(20); // Highlight 20th as in the image
+    this.dateValue.setDate(20);
 
     setInterval(() => {
       this.currentTime = new Date();

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ChartModule } from 'primeng/chart';
+import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ChartModule } from "primeng/chart";
 
 @Component({
-  selector: 'app-execution-period-chart',
+  selector: "app-execution-period-chart",
   standalone: true,
   imports: [CommonModule, ChartModule],
   template: `
@@ -12,80 +12,96 @@ import { ChartModule } from 'primeng/chart';
       <p-chart type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
     </div>
   `,
-  styles: [`
-    .card {
-      background: var(--surface-card);
-      border-radius: var(--content-border-radius);
-      padding: 2rem;
-      width: 100%;
-      flex-shrink: 0;
-      flex-grow: 0;
-      min-height: 0;
-      height: 100%;
-    }
-    h3 {
-      font-size: 1.25rem; /* Equivalent to text-xl */
-      font-weight: 700; /* Equivalent to font-bold */
-      color: var(--text-color);
-      margin-bottom: 1.5rem; /* Equivalent to mb-6 */
-    }
-  `]
+  styles: [
+    `
+      .card {
+        background: #ffffff;
+        border-radius: 1.25rem;
+        padding: 1.5rem;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1f2937;
+      }
+
+      /* Chart canvas'ini majburlab kattalashtirish */
+      ::ng-deep .p-chart canvas {
+        height: 400px !important;
+      }
+    `,
+  ],
 })
 export class ExecutionPeriodChartComponent implements OnInit {
-
   chartData: any;
   chartOptions: any;
 
   ngOnInit() {
     this.chartData = {
-      labels: ['Muddati o\'tgan', '1 kun', '2 kun', '3 kun', '1 kun (Murojaat)', '2 kun (Murojaat)', '3 kun (Murojaat)'],
+      labels: [
+        "Muddati o'tgan",
+        "1 kun",
+        "2 kun",
+        "3 kun",
+        "1 kun (Murojaat)",
+        "2 kun (Murojaat)",
+        "3 kun (Murojaat)",
+      ],
       datasets: [
         {
           data: [8, 12, 10, 3, 10, 7, 9],
-          backgroundColor: '#B1B2EC', // Example color, adjust to match image
-          borderRadius: 8, // Rounded corners for bars
-          barPercentage: 0.7, // Adjust bar width
-          categoryPercentage: 0.8, // Adjust space between categories
-        }
-      ]
+          backgroundColor: "#B1B2EC",
+          borderRadius: 10,
+          barPercentage: 0.6,
+          categoryPercentage: 0.5,
+        },
+      ],
     };
 
     this.chartOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 0.8,
+      responsive: true,
       plugins: {
         legend: {
-          display: false // Hide legend as per image
+          display: false,
         },
-        datalabels: {
-          anchor: 'end',
-          align: 'end',
-          color: 'var(--text-color)', // Adjust color for data labels
-          font: {
-            weight: 'bold'
-          }
-        }
+        tooltip: {
+          enabled: true,
+        },
       },
       scales: {
         x: {
-          grid: {
-            display: false // Hide x-axis grid lines
-          },
           ticks: {
-            color: 'var(--text-color-secondary)' // Adjust x-axis label color
-          }
+            color: "#6B7280",
+            font: {
+              size: 12,
+            },
+          },
+          grid: {
+            display: false,
+          },
         },
         y: {
           beginAtZero: true,
-          grid: {
-            color: 'rgba(0, 0, 0, 0.1)', // Light grid lines
-            borderDash: [5, 5] // Dashed grid lines
-          },
+          suggestedMax: 13,
           ticks: {
-            color: 'var(--text-color-secondary)' // Adjust y-axis label color
-          }
-        }
-      }
+            stepSize: 1,
+            color: "#6B7280",
+            font: {
+              size: 12,
+            },
+          },
+          grid: {
+            color: "rgba(0, 0, 0, 0.05)",
+            borderDash: [5, 5],
+          },
+        },
+      },
     };
   }
-} 
+}

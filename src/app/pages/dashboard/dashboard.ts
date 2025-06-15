@@ -11,7 +11,20 @@ import { IncomingTasksWidgetComponent } from "./components/incoming-tasks-widget
 
 @Component({
   selector: "app-dashboard",
-  imports: [StatsWidget, DashboardRightPanel, ExecutionPeriodChartComponent, IncomingDocumentsChartComponent, IncomingTasksWidgetComponent],
+  styles: [
+    `
+      .custom-height {
+        height: 350px;
+      }
+    `,
+  ],
+  imports: [
+    StatsWidget,
+    DashboardRightPanel,
+    ExecutionPeriodChartComponent,
+    IncomingDocumentsChartComponent,
+    IncomingTasksWidgetComponent,
+  ],
   template: `
     <div class="grid grid-cols-12 gap-6">
       <div class="col-span-12 xl:col-span-9 flex flex-col gap-6">
@@ -23,13 +36,13 @@ import { IncomingTasksWidgetComponent } from "./components/incoming-tasks-widget
           </div>
           <div class="grid grid-cols-12 gap-4 h-full">
             <div class="col-span-12 lg:col-span-3 flex flex-col h-full">
-              <app-incoming-tasks-widget />
+              <app-incoming-tasks-widget class="custom-height" />
             </div>
             <div class="col-span-12 lg:col-span-5 flex flex-col h-full">
-              <app-execution-period-chart />
+              <app-execution-period-chart class="custom-height" />
             </div>
             <div class="col-span-12 lg:col-span-4 flex flex-col h-full">
-              <app-incoming-documents-chart />
+              <app-incoming-documents-chart class="custom-height" />
             </div>
           </div>
         </div>
