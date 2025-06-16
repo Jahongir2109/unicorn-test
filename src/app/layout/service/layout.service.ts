@@ -1,5 +1,6 @@
 import { Injectable, effect, signal, computed } from "@angular/core";
 import { Subject } from "rxjs";
+import { TranslateService } from '@ngx-translate/core';
 
 export interface layoutConfig {
   preset?: string;
@@ -7,6 +8,7 @@ export interface layoutConfig {
   surface?: string | undefined | null;
   darkTheme?: boolean;
   menuMode?: string;
+  language?: string;
 }
 
 interface LayoutState {
@@ -32,6 +34,7 @@ export class LayoutService {
     surface: null,
     darkTheme: false,
     menuMode: "static",
+    language: "uz",
   };
 
   _state: LayoutState = {
@@ -70,11 +73,16 @@ export class LayoutService {
 
   private initialized = false;
 
-  constructor() {
+  constructor(
+    private translateService: TranslateService
+  ) {
     effect(() => {
       const config = this.layoutConfig();
       if (config) {
         this.onConfigUpdate();
+        if (config.language) {
+          this.translateService.use(config.language);
+        }
       }
     });
 
@@ -164,6 +172,11 @@ export class LayoutService {
   onConfigUpdate() {
     this._config = { ...this.layoutConfig() };
     this.configUpdate.next(this.layoutConfig());
+  }
+
+  onLanguageChange(lang: string) {
+    this.layoutConfig.update((state) => ({ ...state, language: lang }));
+    this.translateService.use(lang);
   }
 
   onMenuStateChange(event: { key: string; routeEvent?: boolean }) {

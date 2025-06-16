@@ -30,78 +30,78 @@ export class AppMenu {
         label: "ICHKI HUJJATLAR",
         items: [
           {
-            label: "Bosh sahifa",
+            label: "MENU.HOME",
             icon: "pi pi-fw pi-home",
             routerLink: ["/"],
           },
           {
-            label: "Taqvim",
+            label: "MENU.CALENDAR",
             icon: "pi pi-fw pi-calendar",
             routerLink: ["/uikit/calendar"],
           },
           {
-            label: "Mening hujjatlarim",
+            label: "MENU.MY_DOCUMENTS",
             icon: "pi pi-fw pi-inbox",
             routerLink: ["/uikit/button"],
           },
           {
-            label: "Yuborilgan",
+            label: "MENU.SENT",
             icon: "pi pi-fw pi-send",
             routerLink: [],
             items: [
               {
-                label: "Xabarlar",
+                label: "MENU.MESSAGES",
                 icon: "pi pi-fw pi-globe",
                 routerLink: ["/uikit/input"],
               },
             ],
           },
           {
-            label: "Kelib tushgan",
+            label: "MENU.RECEIVED",
             icon: "pi pi-fw pi-download",
             routerLink: [],
             items: [
               {
-                label: "Xabarlar",
+                label: "MENU.MESSAGES",
                 icon: "pi pi-fw pi-globe",
                 routerLink: ["/uikit/input"],
               },
             ],
           },
           {
-            label: "Kelishish uchun",
+            label: "MENU.FOR_APPROVAL",
             icon: "pi pi-fw pi-comments",
             routerLink: ["/uikit/media"],
           },
           {
-            label: "Rezolyutsiya",
+            label: "MENU.RESOLUTION",
             icon: "pi pi-fw pi-check-square",
             routerLink: ["/uikit/message"],
           },
           {
-            label: "Imzolash uchun",
+            label: "MENU.FOR_SIGNATURE",
             icon: "pi pi-fw pi-pencil",
             routerLink: ["/uikit/misc"],
           },
           {
-            label: "Sektor fishka",
+            label: "MENU.SECTOR_CARD",
             icon: "pi pi-fw pi-briefcase",
             routerLink: [],
             items: [
               {
-                label: "Xabarlar",
+                label: "MENU.MESSAGES",
                 icon: "pi pi-fw pi-globe",
                 routerLink: ["/uikit/input"],
               },
             ],
           },
           {
-            label: "Bo'limim hujjatlari",
+            label: "MENU.DEPARTMENT_DOCUMENTS",
             icon: "pi pi-fw pi-folder",
             routerLink: ["/uikit/timeline"],
           },
           {
-            label: "Tahrirchi",
+            label: "MENU.EDITOR",
             icon: "pi pi-fw pi-cog",
             routerLink: ["/uikit/table"],
           },
@@ -111,12 +111,12 @@ export class AppMenu {
         label: "STATISTIKA",
         items: [
           {
-            label: "Statistika",
+            label: "MENU.STATISTICS",
             icon: "pi pi-fw pi-chart-bar",
             routerLink: ["/uikit/tree"],
           },
           {
-            label: "Hisobotlar",
+            label: "MENU.REPORTS",
             icon: "pi pi-fw pi-file",
             routerLink: ["uikit/menu"],
           },

@@ -1,0 +1,25 @@
+{
+  "WELCOME": "Xush kelibsiz",
+  "DASHBOARD": "Boshqaruv paneli",
+  "MENU": {
+    "HOME": "Bosh sahifa",
+    "CALENDAR": "Kalendar",
+    "MY_DOCUMENTS": "Mening hujjatlarim",
+    "SENT": "Yuborilgan",
+    "RECEIVED": "Qabul qilingan",
+    "FOR_APPROVAL": "Tasdiqlash uchun",
+    "RESOLUTION": "Rezolutsiyalar",
+    "FOR_SIGNATURE": "Imzolash uchun",
+    "SECTOR_CARD": "Sektor kartasi",
+    "DEPARTMENT_DOCUMENTS": "Bo'lim hujjatlari",
+    "EDITOR": "Muharrir",
+    "STATISTICS": "Statistika",
+    "REPORTS": "Hisobotlar",
+    "MESSAGES": "Xabarlar"
+  },
+  "LANGUAGE_MENU": {
+    "UZBEK": "O'zbekcha",
+    "RUSSIAN": "Русский",
+    "ENGLISH": "English"
+  }
+} 

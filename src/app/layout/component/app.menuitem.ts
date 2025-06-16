@@ -12,42 +12,45 @@ import { CommonModule } from "@angular/common";
 import { RippleModule } from "primeng/ripple";
 import { MenuItem } from "primeng/api";
 import { LayoutService } from "../service/layout.service";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "[app-menuitem]",
   standalone: true,
-  imports: [CommonModule, RouterModule, RippleModule],
+  imports: [CommonModule, RouterModule, RippleModule, TranslateModule],
   template: `
     <ng-container>
       <div
-        *ngIf="root && item.visible !== false"
+        *ngIf="root && item?.visible !== false && item?.label"
         class="layout-menuitem-root-text"
       >
-        {{ item.label }}
+        {{ item?.label ?? "" | translate }}
       </div>
 
       <a
-        *ngIf="(!item.routerLink || item.items) && item.visible !== false"
-        [attr.href]="item.url"
+        *ngIf="(!item?.routerLink || item?.items) && item?.visible !== false"
+        [attr.href]="item?.url"
         (click)="itemClick($event)"
-        [ngClass]="item.styleClass"
-        [attr.target]="item.target"
+        [ngClass]="item?.styleClass"
+        [attr.target]="item?.target"
         tabindex="0"
         pRipple
       >
-        <i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
-        <span class="layout-menuitem-text">{{ item.label }}</span>
+        <i [ngClass]="item?.icon" class="layout-menuitem-icon"></i>
+        <span class="layout-menuitem-text">{{
+          item?.label ?? "" | translate
+        }}</span>
         <i
-          *ngIf="item.items"
+          *ngIf="item?.items"
           class="pi pi-fw pi-angle-down layout-submenu-toggler"
         ></i>
       </a>
 
       <a
-        *ngIf="item.routerLink && !item.items && item.visible !== false"
+        *ngIf="item?.routerLink && !item?.items && item?.visible !== false"
         (click)="itemClick($event)"
-        [ngClass]="item.styleClass"
-        [routerLink]="item.routerLink"
+        [ngClass]="item?.styleClass"
+        [routerLink]="item?.routerLink"
         routerLinkActive="active-route"
         [routerLinkActiveOptions]="{
           paths: 'exact',
@@ -55,30 +58,32 @@ import { LayoutService } from "../service/layout.service";
           matrixParams: 'ignored',
           fragment: 'ignored',
         }"
-        [fragment]="item.fragment"
-        [queryParamsHandling]="item.queryParamsHandling"
-        [preserveFragment]="item.preserveFragment"
-        [skipLocationChange]="item.skipLocationChange"
-        [replaceUrl]="item.replaceUrl"
-        [state]="item.state"
-        [queryParams]="item.queryParams"
-        [attr.target]="item.target"
+        [fragment]="item?.fragment"
+        [queryParamsHandling]="item?.queryParamsHandling"
+        [preserveFragment]="item?.preserveFragment"
+        [skipLocationChange]="item?.skipLocationChange"
+        [replaceUrl]="item?.replaceUrl"
+        [state]="item?.state"
+        [queryParams]="item?.queryParams"
+        [attr.target]="item?.target"
         tabindex="0"
         pRipple
       >
-        <i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
-        <span class="layout-menuitem-text">{{ item.label }}</span>
+        <i [ngClass]="item?.icon" class="layout-menuitem-icon"></i>
+        <span class="layout-menuitem-text">{{
+          item?.label ?? "" | translate
+        }}</span>
         <i
-          *ngIf="item.items"
+          *ngIf="item?.items"
           class="pi pi-fw pi-angle-down layout-submenu-toggler"
         ></i>
       </a>
 
       <ul
-        *ngIf="item.items && item.visible !== false"
+        *ngIf="item?.items && item?.visible !== false"
         [@children]="submenuAnimation"
       >
-        <ng-template ngFor let-child let-i="index" [ngForOf]="item.items">
+        <ng-template ngFor let-child let-i="index" [ngForOf]="item?.items">
           <li
             app-menuitem
             [item]="child"
@@ -166,7 +171,7 @@ import { LayoutService } from "../service/layout.service";
   ],
 })
 export class AppMenuitem implements OnInit {
-  @Input() item!: MenuItem;
+  @Input() item?: MenuItem;
   @Input() index!: number;
   @Input() @HostBinding("class.layout-root-menuitem") root!: boolean;
   @Input() parentKey!: string;
@@ -176,7 +181,8 @@ export class AppMenuitem implements OnInit {
 
   constructor(
     private router: Router,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private translateService: TranslateService
   ) {
     effect(() => {
       this.active = this.layoutService.activeMenuKey() === this.key;
@@ -198,7 +204,7 @@ export class AppMenuitem implements OnInit {
   }
 
   checkIfActiveByRoute() {
-    if (this.item.routerLink && Array.isArray(this.item.routerLink)) {
+    if (this.item?.routerLink && Array.isArray(this.item.routerLink)) {
       const url = this.item.routerLink[0];
       const isActive = this.router.isActive(url, {
         paths: "exact",
@@ -217,16 +223,16 @@ export class AppMenuitem implements OnInit {
   }
 
   itemClick(event: Event) {
-    if (this.item.disabled) {
+    if (this.item?.disabled) {
       event.preventDefault();
       return;
     }
 
-    if (this.item.command) {
+    if (this.item?.command) {
       this.item.command({ originalEvent: event, item: this.item });
     }
 
-    if (this.item.items) {
+    if (this.item?.items) {
       this.active = !this.active;
     } else {
       this.layoutService.onMenuStateChange({ key: this.key });

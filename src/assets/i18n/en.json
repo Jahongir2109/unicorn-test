@@ -1,0 +1,25 @@
+{
+  "WELCOME": "Welcome",
+  "DASHBOARD": "Dashboard",
+  "MENU": {
+    "HOME": "Home",
+    "CALENDAR": "Calendar",
+    "MY_DOCUMENTS": "My Documents",
+    "SENT": "Sent",
+    "RECEIVED": "Received",
+    "FOR_APPROVAL": "For Approval",
+    "RESOLUTION": "Resolution",
+    "FOR_SIGNATURE": "For Signature",
+    "SECTOR_CARD": "Sector Card",
+    "DEPARTMENT_DOCUMENTS": "Department Documents",
+    "EDITOR": "Editor",
+    "STATISTICS": "Statistics",
+    "REPORTS": "Reports",
+    "MESSAGES": "Messages"
+  },
+  "LANGUAGE_MENU": {
+    "UZBEK": "O'zbekcha",
+    "RUSSIAN": "Русский",
+    "ENGLISH": "English"
+  }
+} 

@@ -1,0 +1,25 @@
+{
+  "WELCOME": "Добро пожаловать",
+  "DASHBOARD": "Панель управления",
+  "MENU": {
+    "HOME": "Главная",
+    "CALENDAR": "Календарь",
+    "MY_DOCUMENTS": "Мои документы",
+    "SENT": "Отправленные",
+    "RECEIVED": "Полученные",
+    "FOR_APPROVAL": "На согласование",
+    "RESOLUTION": "Резолюции",
+    "FOR_SIGNATURE": "На подпись",
+    "SECTOR_CARD": "Карточка сектора",
+    "DEPARTMENT_DOCUMENTS": "Документы отдела",
+    "EDITOR": "Редактор",
+    "STATISTICS": "Статистика",
+    "REPORTS": "Отчеты",
+    "MESSAGES": "Сообщения"
+  },
+  "LANGUAGE_MENU": {
+    "UZBEK": "O'zbekcha",
+    "RUSSIAN": "Русский",
+    "ENGLISH": "English"
+  }
+} 
