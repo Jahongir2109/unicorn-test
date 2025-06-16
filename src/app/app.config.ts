@@ -1,17 +1,24 @@
 import { provideHttpClient, withFetch, HttpClient } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, APP_INITIALIZER } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 import Aura from '@primeng/themes/aura';
 import { providePrimeNG } from 'primeng/config';
 import { appRoutes } from '../app.routes';
 import 'chart.js/auto';
-import { importProvidersFrom } from '@angular/core';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { firstValueFrom } from 'rxjs';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function appInitializerFactory(translate: TranslateService) {
+  return () => {
+    const defaultLanguage = 'uz'; 
+    return firstValueFrom(translate.use(defaultLanguage));
+  };
 }
 
 export const appConfig: ApplicationConfig = {
@@ -26,6 +33,12 @@ export const appConfig: ApplicationConfig = {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
-        }).providers!
+        }).providers!,
+        {
+          provide: APP_INITIALIZER,
+          useFactory: appInitializerFactory,
+          deps: [TranslateService],
+          multi: true
+        }
     ]
 }; 

@@ -1,4 +1,4 @@
-import { Component, OnInit, computed } from "@angular/core";
+import { Component, OnInit, computed, effect, signal } from "@angular/core";
 import { MenuItem } from "primeng/api";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -217,8 +217,10 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 })
 export class AppTopbar implements OnInit {
   profileMenuItems!: MenuItem[];
+  private translationsLoaded = signal(false);
 
   translateMenuItems = computed(() => {
+    this.translationsLoaded(); // Make computed property depend on this signal
     const currentLang = this.layoutService.layoutConfig().language ?? "uz";
     return [
       {
@@ -243,6 +245,7 @@ export class AppTopbar implements OnInit {
   });
 
   currentLanguageLabel = computed(() => {
+    this.translationsLoaded(); // Make computed property depend on this signal
     const lang = this.layoutService.layoutConfig().language ?? "uz";
     switch (lang) {
       case "uz":
@@ -273,7 +276,13 @@ export class AppTopbar implements OnInit {
   constructor(
     public layoutService: LayoutService,
     private translateService: TranslateService
-  ) {}
+  ) {
+    effect(() => {
+      this.translateService.onLangChange.subscribe(() => {
+        this.translationsLoaded.set(true); // Trigger re-evaluation when language changes
+      });
+    });
+  }
 
   ngOnInit() {
     this.profileMenuItems = [
