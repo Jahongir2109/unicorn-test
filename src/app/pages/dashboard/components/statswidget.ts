@@ -8,9 +8,7 @@ import { CommonModule } from "@angular/common";
   styles: [
     `
       .custom-card {
-        background-image: url("src/assets/images/card.png");
-        background-size: cover;
-        background-position: center;
+        background-color: #fff;
         min-height: 120px;
         border-radius: 1.5rem 2.5rem 1.5rem 1.5rem;
         box-shadow: 0 4px 24px 0 rgba(52, 123, 173, 0.08);
@@ -36,7 +34,7 @@ import { CommonModule } from "@angular/common";
         position: absolute;
         top: 5px;
         right: 2px;
-        background: #2196f3;
+        background: #B4D4E5;
         border-radius: 50%;
         width: 44px;
         height: 44px;
@@ -101,21 +99,21 @@ import { CommonModule } from "@angular/common";
       <div class="col-span-12 lg:col-span-6 xl:col-span-3">
         <div class="custom-card">
           <div class="stat-icon"><i class="pi pi-briefcase"></i></div>
-          <div class="stat-number" style="color:#1976D2">4</div>
+          <div class="stat-number">4</div>
           <div class="stat-title">Vazirlar Mahkamasi hujjatlari</div>
         </div>
       </div>
       <div class="col-span-12 lg:col-span-6 xl:col-span-3">
         <div class="custom-card">
           <div class="stat-icon"><i class="pi pi-users"></i></div>
-          <div class="stat-number" style="color:#E53935">27</div>
+          <div class="stat-number">27</div>
           <div class="stat-title">Hukumat komissiyasi</div>
         </div>
       </div>
       <div class="col-span-12 lg:col-span-6 xl:col-span-3">
         <div class="custom-card">
           <div class="stat-icon"><i class="pi pi-file"></i></div>
-          <div class="stat-number" style="color:#FBC02D">56</div>
+          <div class="stat-number">56</div>
           <div class="stat-title">Ichki hujjatlar</div>
         </div>
       </div>
