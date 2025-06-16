@@ -53,11 +53,13 @@ export class LayoutService {
   private overlayOpen = new Subject<any>();
   private menuSource = new Subject<MenuChangeEvent>();
   private resetSource = new Subject();
+  private languageLoadedSource = new Subject<void>();
 
   menuSource$ = this.menuSource.asObservable();
   resetSource$ = this.resetSource.asObservable();
   configUpdate$ = this.configUpdate.asObservable();
   overlayOpen$ = this.overlayOpen.asObservable();
+  languageLoaded$ = this.languageLoadedSource.asObservable();
 
   theme = computed(() => (this.layoutConfig()?.darkTheme ? "light" : "dark"));
   isSidebarActive = computed(
@@ -176,7 +178,9 @@ export class LayoutService {
 
   onLanguageChange(lang: string) {
     this.layoutConfig.update((state) => ({ ...state, language: lang }));
-    this.translateService.use(lang);
+    this.translateService.use(lang).subscribe(() => {
+      this.languageLoadedSource.next();
+    });
   }
 
   onMenuStateChange(event: { key: string; routeEvent?: boolean }) {

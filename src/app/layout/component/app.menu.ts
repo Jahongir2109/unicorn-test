@@ -47,7 +47,7 @@ export class AppMenu {
           {
             label: "MENU.SENT",
             icon: "pi pi-fw pi-send",
-            routerLink: [],
+            routerLink: ["sent"],
             items: [
               {
                 label: "MENU.MESSAGES",
@@ -59,7 +59,7 @@ export class AppMenu {
           {
             label: "MENU.RECEIVED",
             icon: "pi pi-fw pi-download",
-            routerLink: [],
+            routerLink: ["receive"],
             items: [
               {
                 label: "MENU.MESSAGES",
@@ -86,7 +86,7 @@ export class AppMenu {
           {
             label: "MENU.SECTOR_CARD",
             icon: "pi pi-fw pi-briefcase",
-            routerLink: [],
+            routerLink: ["input"],
             items: [
               {
                 label: "MENU.MESSAGES",
