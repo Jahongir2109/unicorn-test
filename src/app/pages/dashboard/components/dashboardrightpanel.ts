@@ -151,9 +151,11 @@ import { CommonModule } from "@angular/common";
         </div>
         <div class="flex flex-col leading-snug" style="width: 168px;">
           <div class="text-black text-base font-semibold">Tug'ilgan kunlar</div>
-          <div class="text-xs" style="color: #64B5F6; line-height: 1.3; height: 32px;">
-            Bugun Abbas Xazratov va
-            yana 4 kishining tug'ilgan kuni
+          <div
+            class="text-xs"
+            style="color: #64B5F6; line-height: 1.3; height: 32px;"
+          >
+            Bugun Abbas Xazratov va yana 4 kishining tug'ilgan kuni
           </div>
         </div>
       </div>
@@ -167,7 +169,7 @@ import { CommonModule } from "@angular/common";
           <img
             src="assets/images/logo.png"
             alt="Meet"
-            style="width: 24px; height: 24px;"
+            style="width: 80px; height: 24px;"
           />
           <div class="flex flex-col">
             <span class="font-semibold text-black text-base">Meet</span>
