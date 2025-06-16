@@ -278,7 +278,7 @@ export class AppTopbar implements OnInit {
     private translateService: TranslateService
   ) {
     effect(() => {
-      this.layoutService.languageLoaded$.subscribe(() => {
+      this.translateService.onLangChange.subscribe(() => {
         this.translationsLoaded.set(true); // Trigger re-evaluation when language changes
       });
     });
