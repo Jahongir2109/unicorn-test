@@ -1,17 +1,25 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
+export const AuthGuard = () => {
+  const router = inject(Router);
+  const currentUser = localStorage.getItem('user');
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
 
-  constructor(private router: Router) { }
+  if (currentUser) {
+    const user = JSON.parse(currentUser);
+    // Check if the current user exists in the users array
+    const userExists = users.some((u: any) => 
+      u.email === user.email && 
+      u.password === user.password && 
+      u.username === user.username
+    );
 
-  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // For demonstration, always redirect to login.
-    // In a real application, you would check authentication status here.
-    return this.router.createUrlTree(['/auth/login']);
+    if (userExists) {
+      return true;
+    }
   }
-} 
+
+  // If no user or user not found in users array, redirect to login
+  return router.parseUrl('/auth/login');
+}; 

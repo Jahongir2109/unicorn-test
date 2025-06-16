@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Router } from "@angular/router";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
 import { InputTextModule } from "primeng/inputtext";
@@ -42,7 +42,7 @@ import { TranslateModule } from "@ngx-translate/core";
             </p>
             <div class="mb-8">
               <img
-                src="assets/images/qrcode.png"
+                src="assets/images/qr-code.png"
                 alt="QR Code"
                 class="mx-auto w-48 h-48"
               />
@@ -56,11 +56,58 @@ import { TranslateModule } from "@ngx-translate/core";
               label="One ID orqali kirish"
               icon="pi pi-id-card"
               styleClass="w-full mb-8"
+              routerLink="/auth/register"
             ></p-button>
             <div class="text-gray-500 text-sm">
               Call-center:
               <span class="text-primary-500">+99871-200-46-46</span>
             </div>
+
+            <!-- Login Form -->
+            <form (ngSubmit)="loginUser()" class="mt-8">
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                Login with Email
+              </h3>
+              <div class="mb-4">
+                <label
+                  for="loginEmail"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Email</label
+                >
+                <input
+                  pInputText
+                  id="loginEmail"
+                  type="email"
+                  placeholder="Enter your email"
+                  class="w-full"
+                  [(ngModel)]="loginEmail"
+                  name="loginEmail"
+                  required
+                />
+              </div>
+              <div class="mb-6">
+                <label
+                  for="loginPassword"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Password</label
+                >
+                <p-password
+                  id="loginPassword"
+                  placeholder="Enter your password"
+                  [toggleMask]="true"
+                  [fluid]="true"
+                  [feedback]="false"
+                  [(ngModel)]="loginPassword"
+                  name="loginPassword"
+                  required
+                ></p-password>
+              </div>
+              <p-button
+                label="Login"
+                styleClass="w-full p-button-success"
+                type="submit"
+              ></p-button>
+            </form>
           </div>
         </div>
 
@@ -140,9 +187,25 @@ import { TranslateModule } from "@ngx-translate/core";
   `,
 })
 export class Login {
-  email: string = "";
+  loginEmail!: string;
+  loginPassword!: string;
 
-  password: string = "";
+  constructor(private router: Router) {}
 
-  checked: boolean = false;
+  loginUser() {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const foundUser = users.find(
+      (user: any) =>
+        user.email === this.loginEmail && user.password === this.loginPassword
+    );
+
+    if (foundUser) {
+      // Save current user data
+      localStorage.setItem("user", JSON.stringify(foundUser));
+      alert("Login successful!");
+      this.router.navigate(["/"]);
+    } else {
+      alert("Invalid email or password.");
+    }
+  }
 }
