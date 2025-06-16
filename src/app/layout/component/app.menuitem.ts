@@ -122,6 +122,10 @@ import { LayoutService } from "../service/layout.service";
         font-size: 0.95rem;
       }
 
+      :host:not(.layout-root-menuitem) {
+        padding-left: 1.5rem;
+      }
+
       :host li a:hover {
         background-color: rgba(255, 255, 255, 0.1);
       }
@@ -135,7 +139,7 @@ import { LayoutService } from "../service/layout.service";
       :host ul {
         list-style: none;
         padding: 0;
-        margin: 0.25rem 0 0.25rem 1.25rem;
+        margin: 0;
       }
 
       :host .layout-menuitem-root-text {
