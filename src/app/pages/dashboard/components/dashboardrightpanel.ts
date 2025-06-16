@@ -28,7 +28,6 @@ import { CommonModule } from "@angular/common";
         box-sizing: border-box;
       }
 
-      /* 🌟 Custom Calendar Styles (Based on Uploaded Image) */
       ::ng-deep .p-calendar {
         width: 100%;
         font-family: "Segoe UI", sans-serif;
@@ -136,26 +135,45 @@ import { CommonModule } from "@angular/common";
         </div>
       </div>
 
-      <!-- Birthday -->
-      <div class="rounded-2xl shadow-md p-4 bg-white flex gap-4 items-center">
+      <!-- ✅ Updated Birthday Design -->
+      <div
+        class="flex items-center gap-4 px-6 py-4 bg-white rounded-xl shadow-sm"
+        style="height: 80px;"
+      >
         <div
-          class="bg-pink-100 w-14 h-14 flex items-center justify-center rounded-full"
+          class="w-14 h-14 rounded-full bg-[#EBE8F7] flex items-center justify-center"
         >
-          <i class="pi pi-gift text-pink-500 text-2xl"></i>
+          <img
+            src="assets/images/birthday-cake.png"
+            alt="Birthday"
+            style="width: 24px; height: 24px;"
+          />
         </div>
-        <div>
-          <div class="font-semibold">Tug'ilgan kunlar</div>
-          <div class="text-sm">
-            Bugun <span class="font-bold text-pink-500">Abbos Xazratov</span> va
-            <span class="font-bold text-pink-500">yana 4 kishi</span> tug'ilgan
-            kuni
+        <div class="flex flex-col leading-snug" style="width: 168px;">
+          <div class="text-black text-base font-semibold">Tug'ilgan kunlar</div>
+          <div class="text-xs" style="color: #64B5F6; line-height: 1.3; height: 32px;">
+            Bugun Abbas Xazratov va
+            yana 4 kishining tug'ilgan kuni
           </div>
         </div>
       </div>
 
       <!-- Meet -->
-      <div class="rounded-2xl shadow-md p-4 bg-white flex flex-col gap-4">
-        <img src="assets/layout/images/meet-logo.png" alt="Meet" class="h-8" />
+      <div
+        class="flex flex-col gap-4 px-6 py-4 bg-white rounded-xl shadow-sm"
+        style="height: 140px;"
+      >
+        <div class="flex items-center gap-2">
+          <img
+            src="assets/images/logo.png"
+            alt="Meet"
+            style="width: 24px; height: 24px;"
+          />
+          <div class="flex flex-col">
+            <span class="font-semibold text-black text-base">Meet</span>
+            <span class="text-xs text-gray-500">Digital Office</span>
+          </div>
+        </div>
         <div class="flex gap-2">
           <button
             pButton
@@ -175,9 +193,9 @@ import { CommonModule } from "@angular/common";
       <!-- LexUZ -->
       <div class="rounded-2xl shadow-md p-4 bg-white flex flex-col gap-3">
         <img
-          src="assets/layout/images/lexuz-logo.png"
+          src="assets/images/lexuz-logo.png"
           alt="LexUZ"
-          class="h-10"
+          style="width: 86px; height: 26px;"
         />
         <div class="relative">
           <input

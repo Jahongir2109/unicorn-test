@@ -1,6 +1,7 @@
 import { Component, ElementRef } from "@angular/core";
 import { AppMenu } from "./app.menu";
 import { CommonModule } from "@angular/common";
+import { LayoutService } from "../service/layout.service";
 
 @Component({
   selector: "app-sidebar",
@@ -8,7 +9,7 @@ import { CommonModule } from "@angular/common";
   imports: [AppMenu, CommonModule],
   template: ` <div class="layout-sidebar">
     <div class="sidebar-header">
-      <button class="menu-toggle">
+      <button class="menu-toggle" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
       </button>
       <div class="app-logo">
@@ -126,5 +127,5 @@ import { CommonModule } from "@angular/common";
   ],
 })
 export class AppSidebar {
-  constructor(public el: ElementRef) {}
+  constructor(public el: ElementRef, public layoutService: LayoutService) {}
 }
