@@ -166,12 +166,6 @@ export class LayoutService {
     this.configUpdate.next(this.layoutConfig());
   }
 
-  // onMenuStateChange(event: MenuChangeEvent) {
-  //     if (this.activeMenuKey() !== event.key) {
-  //         this.activeMenuKey.set(event.key);
-  //         this.menuSource.next(event);
-  //     }
-  // }
   onMenuStateChange(event: { key: string; routeEvent?: boolean }) {
     this.activeMenuKey.set(event.key);
   }

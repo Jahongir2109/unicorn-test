@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from "@angular/core";
+import { Component, HostBinding, Input, OnInit, effect } from "@angular/core";
 import { Router, RouterModule, NavigationEnd } from "@angular/router";
 import {
   animate,
@@ -119,6 +119,7 @@ import { LayoutService } from "../service/layout.service";
         color: white;
         text-decoration: none;
         transition: background-color 0.2s;
+        font-size: 0.95rem;
       }
 
       :host li a:hover {
@@ -126,7 +127,7 @@ import { LayoutService } from "../service/layout.service";
       }
 
       :host(.active-menuitem) > a {
-        background-color: rgba(255, 255, 255, 0.15);
+        background-color: rgba(255, 255, 255, 0.25);
         color: white;
         font-weight: 600;
       }
@@ -134,19 +135,19 @@ import { LayoutService } from "../service/layout.service";
       :host ul {
         list-style: none;
         padding: 0;
-        margin: 0.25rem 0 0.25rem 1rem;
+        margin: 0.25rem 0 0.25rem 1.25rem;
       }
 
       :host .layout-menuitem-root-text {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.9rem;
         padding: 1rem 1rem 0.5rem 1rem;
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: 700;
       }
 
       :host .layout-menuitem-icon {
-        margin-right: 0.5rem;
+        margin-right: 0.75rem;
       }
 
       :host .layout-submenu-toggler {
@@ -172,7 +173,11 @@ export class AppMenuitem implements OnInit {
   constructor(
     private router: Router,
     private layoutService: LayoutService
-  ) {}
+  ) {
+    effect(() => {
+      this.active = this.layoutService.activeMenuKey() === this.key;
+    });
+  }
 
   ngOnInit() {
     this.key = this.parentKey
@@ -186,14 +191,6 @@ export class AppMenuitem implements OnInit {
       .subscribe(() => {
         this.checkIfActiveByRoute();
       });
-
-    // 👉 signal o‘rniga manual update qilish:
-    this.active = this.layoutService.activeMenuKey() === this.key;
-
-    // layoutService ni kuzatish (agar u observable bo‘lsa)
-    this.layoutService.menuSource$.subscribe((state) => {
-      this.active = state.key === this.key;
-    });
   }
 
   checkIfActiveByRoute() {
